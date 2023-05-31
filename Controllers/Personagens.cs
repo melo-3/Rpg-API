@@ -47,6 +47,10 @@ namespace Rpg.Controllers
         [HttpPost]
         public async Task<ActionResult<List<Personagem>>> AdicionarPersonagem(Personagem novo)
         {
+            if(novo.Id == 0)
+            {
+                novo.Id = lista[lista.Count - 1].Id + 1;
+            }
             lista.Add(novo);
             return Ok(lista);
         }
